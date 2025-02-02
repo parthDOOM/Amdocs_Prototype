@@ -1,0 +1,323 @@
+:root {
+  /* Chat Interface Variables */
+  --body-bg: linear-gradient(135deg, var(--bg-color) 0%, var(--chat-bg) 100%);
+  --chat-bg: #ffffff;
+  --border: 1px solid var(--bs-info);
+  --img-border: 1px solid #000000;
+  --left-msg-bg: #aaeeff;
+  --right-msg-bg: #d8d8d8;
+  
+  /* Theme Variables */
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --nav-bg: #f8f9fa;
+}
+
+/* Dark Theme Variables */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --nav-bg: #2d2d2d;
+  --chat-bg: #2d2d2d;
+  --img-border: 1px solid #ffffff;
+  --left-msg-bg: #2196F3;
+  --right-msg-bg: #424242;
+  --border: 1px solid #2196F3;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-image: var(--body-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar {
+  background-color: var(--nav-bg) !important;
+  transition: background-color 0.3s;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.chatbot {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 92%;
+}
+
+.chatbot-profile {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 75%;
+  height: 100%;
+  border-left: var(--border);
+  background: var(--chat-bg);
+  box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.2);
+  line-height: 1.5;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.main-chat {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 10px;
+}
+
+.main-chat::-webkit-scrollbar {
+  width: 10px;
+}
+
+.main-chat::-webkit-scrollbar-track {
+  background: var(--chat-bg);
+}
+
+.main-chat::-webkit-scrollbar-thumb {
+  background: var(--right-msg-bg);
+}
+
+.chat {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 15px;
+}
+
+.chat-bubble {
+  max-width: 480px;
+  padding: 15px;
+  border-radius: 15px;
+  background: var(--left-msg-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s;
+}
+
+.chat-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.chat-info-name {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.chat-info-time {
+  font-size: 0.85em;
+}
+
+.left-msg .chat-bubble {
+  border-bottom-left-radius: 0;
+}
+
+.right-msg {
+  flex-direction: row-reverse;
+}
+
+.right-msg .chat-bubble {
+  background: var(--right-msg-bg);
+  border-bottom-right-radius: 0;
+}
+
+.right-msg .chat-image {
+  margin: 0 0 0 10px;
+}
+
+.tools {
+  display: flex;
+  padding: 10px;
+}
+
+.chat-inputarea {
+  display: flex;
+  padding: 10px;
+  border-top: var(--border);
+  background: var(--chat-bg);
+  transition: background-color 0.3s;
+}
+
+.chat-inputarea * {
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 1em;
+}
+
+.chat-input {
+  flex: 1;
+  background: var(--left-msg-bg);
+  color: var(--text-color);
+}
+
+.chat-input::placeholder {
+  font-style: italic;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.chat-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  background: var(--right-msg-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  border: var(--img-border);
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  width: 60px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: #e2e2e2;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+  border: none;
+  padding: 0;
+  margin: 0 10px;
+}
+
+.theme-toggle[data-theme="dark"] {
+  background-color: #4a4a4a;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.3s;
+}
+
+.theme-toggle[data-theme="dark"] .toggle-thumb {
+  transform: translateX(30px);
+}
+
+.toggle-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+}
+
+.sun-icon {
+  left: 8px;
+  color: #ffd700;
+}
+
+.moon-icon {
+  right: 8px;
+  color: #ffffff;
+}
+
+/* Audio Controls */
+audio::-webkit-media-controls {
+  background-color: var(--chat-bg);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+audio::-webkit-media-controls-play-button {
+  background-color: var(--left-msg-bg);
+  color: var(--text-color);
+  border-radius: 50%;
+  padding: 10px;
+}
+
+/* Dark mode styles for SOS page */
+.theme-list-item {
+    background-color: var(--chat-bg);
+    color: var(--text-color);
+    border-color: rgba(0,0,0,0.125);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] .theme-list-item {
+    background-color: var(--nav-bg);
+    border-color: rgba(255,255,255,0.125);
+}
+
+[data-theme="dark"] .theme-list-item h4 {
+    color: #f8f9fa;
+}
+
+[data-theme="dark"] .link-info {
+    color: #6edff6 !important;
+}
+
+[data-theme="dark"] #about-us-title {
+    color: var(--text-color);
+}
+
+/* Ensure emergency numbers are always visible */
+[data-theme="dark"] .fw-bold {
+    color: #fff;
+}
+
+/* Navbar text color adjustments for dark mode */
+[data-theme="dark"] .navbar-brand,
+[data-theme="dark"] .nav-link {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .navbar-nav .nav-link.active {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* Keep CHAT button text black in both modes since it has bg-info */
+.nav-item.bg-info .nav-link {
+    color: #000000 !important;
+}
+
+/* Keep SOS button text white in both modes since it has bg-danger */
+.nav-item.bg-danger .nav-link {
+    color: #ffffff !important;
+}
+
+/* Hover states for dark mode */
+[data-theme="dark"] .nav-link:hover {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Active/current page indicator for dark mode */
+[data-theme="dark"] .nav-item:not(.bg-info):not(.bg-danger) .nav-link.active {
+    color: #ffffff !important;
+    font-weight: 500;
+}
